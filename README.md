@@ -1,4 +1,4 @@
-# node-dct
+# fft-js
 Pure Node.js implementation of the Fast Fourier Transform (Cooley-Tukey Method).
 
 # Example

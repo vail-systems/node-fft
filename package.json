@@ -1,0 +1,34 @@
+{
+  "name": "fft-js",
+  "version": "0.0.1",
+  "description": "Simple pure Javascript implementation of the Cooley-Tukey algorithm.",
+  "license": "MIT",
+  "homepage": "https://github.com/vail-systems/node-fft",
+  "repository": "vail-systems/node-fft",
+  "contributors": [
+    "Joshua Jung <joshua.p.jung@gmail.com> (http://www.joshjung.com)",
+    "Ben Bryan <bbryan@vailsys.com>"
+  ],
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "fft.js",
+    "src",
+    "test"
+  ],
+  "keywords": [
+    "fft",
+    "dft",
+    "fast",
+    "discrete",
+    "fourier",
+    "transform",
+    "audio",
+    "speech"
+  ],
+  "dependencies": {
+  }
+}

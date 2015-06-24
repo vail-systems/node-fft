@@ -1,15 +1,67 @@
 # fft-js
 Pure Node.js implementation of the Fast Fourier Transform (Cooley-Tukey Method).
 
-# Example
+# Simple Example
 
-    var fft = require('fft-js'),
+    var fft = require('fft-js').fft,
         signal = [1,0,1,0];
 
     var coef = fft(signal);
 
     console.log(coef);
 
+# Frequency/Magnitude Example
+
+    var fft = require('fft-js').fft,
+        fftUtil = require('fft-js').util,
+        signal = [1,0,1,0];
+
+    var coef = fft(signal);
+
+    var frequencies = fftUtil.fftFreq(coef, 8000), // Sample rate and coef is just used for length
+        magnitudes = fftUtil.fftMag(coef); 
+
+    var both = frequencies.map(function (f, ix) {
+        return {frequency: f, magnitude: magnitudes[ix]};
+    });
+
+    console.log(coef);
+
+# Command Line
+
+For testing, you can run from the command line. Input is assumed to be from standard input and contain
+a comma-delimited list of real numbers.
+
+Command:
+    node fft.js < test/signal8.js
+
+Console:
+
+    Signal:  [ 1, 1, 1, 1, 0, 0, 0, 0 ]
+    FFT:  [ [ 4, 0 ],
+    [ 1, -2.414213562373095 ],
+    [ 0, 0 ],
+    [ 1, -0.4142135623730949 ],
+    [ 0, 0 ],
+    [ 0.9999999999999999, 0.4142135623730949 ],
+    [ 0, 0 ],
+    [ 0.9999999999999997, 2.414213562373095 ] ]
+    FFT Magnitudes:  [ 4,
+    2.613125929752753,
+    0,
+    1.0823922002923938,
+    0,
+    1.0823922002923938,
+    0,
+    2.6131259297527527 ]
+    FFT Frequencies:  [ 0, 62.5, 125, 187.5, 250, 312.5, 375, 437.5 ]
+
+# Testing
+
+See `test/test.js`. Using Mocha:
+
+    mocha
+                            
 # License 
 
 The MIT License (MIT)

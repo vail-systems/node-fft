@@ -22,33 +22,7 @@
 // The following code assumes a complex number is
 // an array: [real, imaginary]
 //-------------------------------------------------
-
-//-------------------------------------------------
-// Add two complex numbers
-//-------------------------------------------------
-var complexAdd = function (a, b)
-{
-    return [a[0] + b[0], a[1] + b[1]];
-};
-
-//-------------------------------------------------
-// Subtract two complex numbers
-//-------------------------------------------------
-var complexSubtract = function (a, b)
-{
-    return [a[0] - b[0], a[1] - b[1]];
-};
-
-//-------------------------------------------------
-// Multiply two complex numbers
-//
-// (a + bi) * (c + di) = (ac - bd) + (ad + bc)i
-//-------------------------------------------------
-var complexMultiply = function (a, b) 
-{
-    return [(a[0] * b[0] - a[1] * b[1]), 
-            (a[0] * b[1] + a[1] * b[0])];
-};
+var complex = require('./complex');
 
 //-------------------------------------------------
 // By Eulers Formula:
@@ -88,10 +62,10 @@ var fft = function (vector) {
     {
         // t is a complex number!
         var t = X_evens[k],
-            e = complexMultiply(exponent(k, N), X_odds[k]);
+            e = complex.multiply(exponent(k, N), X_odds[k]);
 
-        X[k] =         complexAdd(t, e);
-        X[k + (N/2)] = complexSubtract(t, e); 
+        X[k] =         complex.add(t, e);
+        X[k + (N/2)] = complex.subtract(t, e); 
     }
 
     function even(__, ix) {return ix % 2 == 0;}

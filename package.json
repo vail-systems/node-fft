@@ -1,6 +1,6 @@
 {
   "name": "fft-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple pure Javascript implementation of the Cooley-Tukey algorithm.",
   "license": "MIT",
   "homepage": "https://github.com/vail-systems/node-fft",

@@ -1,6 +1,8 @@
 # fft-js
 Pure Node.js implementation of the Fast Fourier Transform (Cooley-Tukey Method).
 
+Note: normally inclusion of 'js' in the package name is discouraged. However many of the FFT implementations on NPM at the time this was written are wrappers for other languages like Ruby or C. We wanted to write our own, unoptimized implementation in pure Javascript as an educational tool. As a result it is called fft-js.
+
 # Simple Example
 
     var fft = require('fft-js').fft,

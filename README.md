@@ -8,9 +8,9 @@ Note: normally inclusion of 'js' in the package name is discouraged. However man
     var fft = require('fft-js').fft,
         signal = [1,0,1,0];
 
-    var coef = fft(signal);
+    var phasors = fft(signal);
 
-    console.log(coef);
+    console.log(phasors);
 
 # Frequency/Magnitude Example
 
@@ -18,16 +18,16 @@ Note: normally inclusion of 'js' in the package name is discouraged. However man
         fftUtil = require('fft-js').util,
         signal = [1,0,1,0];
 
-    var coef = fft(signal);
+    var phasors= fft(signal);
 
-    var frequencies = fftUtil.fftFreq(coef, 8000), // Sample rate and coef is just used for length
-        magnitudes = fftUtil.fftMag(coef); 
+    var frequencies = fftUtil.fftFreq(phasors, 8000), // Sample rate and coef is just used for length
+        magnitudes = fftUtil.fftMag(phasors); 
 
     var both = frequencies.map(function (f, ix) {
         return {frequency: f, magnitude: magnitudes[ix]};
     });
 
-    console.log(coef);
+    console.log(both);
 
 # Command Line
 
@@ -40,6 +40,7 @@ Command:
 Console:
 
     Signal:  [ 1, 1, 1, 1, 0, 0, 0, 0 ]
+
     FFT:  [ [ 4, 0 ],
     [ 1, -2.414213562373095 ],
     [ 0, 0 ],
@@ -48,6 +49,7 @@ Console:
     [ 0.9999999999999999, 0.4142135623730949 ],
     [ 0, 0 ],
     [ 0.9999999999999997, 2.414213562373095 ] ]
+
     FFT Magnitudes:  [ 4,
     2.613125929752753,
     0,
@@ -56,6 +58,7 @@ Console:
     1.0823922002923938,
     0,
     2.6131259297527527 ]
+
     FFT Frequencies:  [ 0, 62.5, 125, 187.5, 250, 312.5, 375, 437.5 ]
 
 # Testing
@@ -63,7 +66,17 @@ Console:
 See `test/test.js`. Using Mocha:
 
     mocha
-                            
+
+Output:
+
+    FFT (Cooley-Tukey)
+    1,0,1,0
+    ✓ Should properly compute [1,0,1,0]
+    1,0,1,0,2,0,2,0
+    ✓ Should properly compute [1,0,1,0,2,0,2,0]
+
+    2 passing (11ms)
+
 # License 
 
 The MIT License (MIT)

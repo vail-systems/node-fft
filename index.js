@@ -8,5 +8,6 @@
 \*===========================================================================*/
 module.exports = {
     fft: require('./src/fft'),
-    util: require('./src/fftutil')
+    util: require('./src/fftutil'),
+    dft: require('./src/dft')
 };

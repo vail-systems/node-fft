@@ -13,6 +13,23 @@
 //-------------------------------------------------
 var complex = require('./complex');
 
+
+//-------------------------------------------------
+// By Eulers Formula:
+//
+// e^(i*x) = cos(x) + i*sin(x)
+//
+// and in DFT:
+//
+// x = -2*PI*(k/N)
+//-------------------------------------------------
+var exponent = function (k, N) {
+    var x = -2 * Math.PI * (k / N);
+
+    // Real       , Imaginary
+    return [Math.cos(x), Math.sin(x)];
+};
+
 //-------------------------------------------------
 // Calculate FFT Magnitude for complex numbers.
 //-------------------------------------------------
@@ -40,5 +57,6 @@ var fftFreq = function (fftBins, sampleRate) {
 //-------------------------------------------------
 module.exports = {
     fftMag: fftMag,
-    fftFreq: fftFreq
+    fftFreq: fftFreq,
+    exponent: exponent
 };

@@ -23,22 +23,7 @@
 // an array: [real, imaginary]
 //-------------------------------------------------
 var complex = require('./complex');
-
-//-------------------------------------------------
-// By Eulers Formula:
-//
-// e^(i*x) = cos(x) + i*sin(x)
-//
-// and in DFT:
-// 
-// x = -2*PI*(k/N)
-//-------------------------------------------------
-var exponent = function (k, N) {
-    var x = -2 * Math.PI * (k / N);
-
-         // Real       , Imaginary
-    return [Math.cos(x), Math.sin(x)];
-};
+var fftUtil = require('./fftutil');
 
 //-------------------------------------------------
 // Calculate FFT for vector where vector.length
@@ -62,7 +47,7 @@ var fft = function (vector) {
     {
         // t is a complex number!
         var t = X_evens[k],
-            e = complex.multiply(exponent(k, N), X_odds[k]);
+            e = complex.multiply(fftUtil.exponent(k, N), X_odds[k]);
 
         X[k] =         complex.add(t, e);
         X[k + (N/2)] = complex.subtract(t, e); 

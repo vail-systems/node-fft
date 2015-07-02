@@ -27,7 +27,9 @@
     "fourier",
     "transform",
     "audio",
-    "speech"
+    "speech",
+    "cooley",
+    "tukey"
   ],
   "dependencies": {
   }

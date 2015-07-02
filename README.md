@@ -28,6 +28,15 @@ Note: normally inclusion of 'js' in the package name is discouraged. However man
     });
 
     console.log(both);
+    
+# Brute force O(n^2) DFT Example
+
+    var dft = require('fft-js').dft,
+        signal = [1,0,1,0];
+    
+    var phasors = dft(signal);
+    
+    console.log(phasors);
 
 # Command Line
 

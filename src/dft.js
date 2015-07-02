@@ -27,8 +27,8 @@ var dft = function(vector) {
 
     for (var i = 0; i < N; i++) {
       var exp = fftUtil.exponent(k * i, N);
-      X[k] = complex.add(X[k], exp); //Complex summation of X[k] and exponential
-      //X[k] = complex.multiply(X[k], [2, 0]);
+      var term = complex.multiply([vector[i], 0], exp);
+      X[k] = complex.add(X[k], term); //Complex summation of X[k] and exponential
     }
   }
 

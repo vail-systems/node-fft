@@ -31,6 +31,8 @@ Note: normally inclusion of 'js' in the package name is discouraged. However man
     
 # Brute force O(n^2) DFT Example
 
+The DFT (Discrete Fourier Transform) is an unoptimized Fourier Transform for discrete data. In this project it is primarily a teaching tool, and is used to test the FFT.
+
     var dft = require('fft-js').dft,
         signal = [1,0,1,0];
     
@@ -79,12 +81,25 @@ See `test/test.js`. Using Mocha:
 Output:
 
     FFT (Cooley-Tukey)
-    1,0,1,0
-    ✓ Should properly compute [1,0,1,0]
-    1,0,1,0,2,0,2,0
-    ✓ Should properly compute [1,0,1,0,2,0,2,0]
-
-    2 passing (11ms)
+      1,0,1,0
+        ✓ Should properly compute [1,0,1,0]
+      1,0,1,0,2,0,2,0
+        ✓ Should properly compute [1,0,1,0,2,0,2,0]
+  
+    DFT O(n^2) Brute Force
+      1,0,1,0
+        ✓ Should properly compute [1, 0, 1, 0]
+  
+    Compare FFT to DFT
+      randomSignal FFT
+        ✓ Should compute randomSignal
+      randomSignal DFT
+        ✓ Should compute randomSignal
+      randomSignal FFT and DFT
+        ✓ Should compute same output
+  
+  
+    6 passing (14ms)
 
 # License 
 

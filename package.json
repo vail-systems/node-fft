@@ -32,5 +32,6 @@
     "tukey"
   ],
   "dependencies": {
+    "commander": "~2.7.1"
   }
 }

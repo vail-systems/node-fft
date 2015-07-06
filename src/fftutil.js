@@ -34,7 +34,8 @@ var exponent = function (k, N) {
 // Calculate FFT Magnitude for complex numbers.
 //-------------------------------------------------
 var fftMag = function (fftBins) {
-    return fftBins.map(complex.magnitude);
+    var ret = fftBins.map(complex.magnitude);
+    return ret.slice(0, ret.length / 2);
 };
 
 //-------------------------------------------------
@@ -45,9 +46,10 @@ var fftMag = function (fftBins) {
 // samples taken per second.
 //-------------------------------------------------
 var fftFreq = function (fftBins, sampleRate) {
-    var stepFreq = sampleRate / (fftBins.length * 2);
+    var stepFreq = sampleRate / (fftBins.length);
+    var ret = fftBins.slice(0, fftBins.length / 2);
 
-    return fftBins.map(function (__, ix) {
+    return ret.map(function (__, ix) {
         return ix * stepFreq;
     });
 };

@@ -20,7 +20,7 @@ Note: normally inclusion of 'js' in the package name is discouraged. However man
 
     var phasors= fft(signal);
 
-    var frequencies = fftUtil.fftFreq(phasors, 8000), // Sample rate and coef is just used for length
+    var frequencies = fftUtil.fftFreq(phasors, 8000), // Sample rate and coef is just used for length, and frequency step
         magnitudes = fftUtil.fftMag(phasors); 
 
     var both = frequencies.map(function (f, ix) {
@@ -61,16 +61,9 @@ Console:
     [ 0, 0 ],
     [ 0.9999999999999997, 2.414213562373095 ] ]
 
-    FFT Magnitudes:  [ 4,
-    2.613125929752753,
-    0,
-    1.0823922002923938,
-    0,
-    1.0823922002923938,
-    0,
-    2.6131259297527527 ]
+    FFT Magnitudes:  [ 4, 2.613125929752753, 0, 1.0823922002923938 ]
 
-    FFT Frequencies:  [ 0, 62.5, 125, 187.5, 250, 312.5, 375, 437.5 ]
+    FFT Frequencies:  [ 0, 125, 250, 375 ]
 
 # Testing
 

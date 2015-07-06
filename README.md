@@ -61,7 +61,7 @@ Console:
     [ 0, 0 ],
     [ 0.9999999999999997, 2.414213562373095 ] ]
 
-    FFT Magnitudes:  [ 4, 2.613125929752753, 0, 1.0823922002923938 ]
+    FFT Magnitudes:  [ 4, 2.613125929752753, 0, 1.0823922002923938 ] //We only see the first 4, because the 2nd 4 are the Nyquist frequency (discarded for aliasing), and then the mirror image negative frequencies.
 
     FFT Frequencies:  [ 0, 125, 250, 375 ]
 

@@ -46,7 +46,7 @@ For testing, you can run from the command line. Input is assumed to be from stan
 a comma-delimited list of real numbers.
 
 Command:
-    node fft.js < test/signal8.js
+    node fft.js test/signal8.js
 
 Console:
 

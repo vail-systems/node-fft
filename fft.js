@@ -20,13 +20,13 @@ program.parse(process.argv);
 var sampleRate = parseFloat(program.sampleRate);
 
 if (isNaN(sampleRate)) {
-    console.log("Please pass a valid sample rate with the -s option!");
+    console.log('Please pass a valid sample rate with the -s option!');
     program.outputHelp();
     process.exit(1);
 }
 
 if (program.args.length < 1) {
-    console.log("Please pass a valid signal file!");
+    console.log('Please pass a valid signal file!');
     program.outputHelp();
     process.exit(1);
 }

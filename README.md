@@ -46,7 +46,7 @@ For testing, you can run from the command line. Input is assumed to be from stan
 a comma-delimited list of real numbers.
 
 Command:
-    node fft.js test/signal8.js
+    node fft.js -s 44100 test/signal8.js
 
 Console:
 
@@ -63,7 +63,7 @@ Console:
 
     FFT Magnitudes:  [ 4, 2.613125929752753, 0, 1.0823922002923938 ] //We only see the first 4, because the 2nd 4 are the Nyquist frequency (discarded for aliasing), and then the mirror image negative frequencies.
 
-    FFT Frequencies:  [ 0, 125, 250, 375 ]
+    FFT Frequencies:  [ 0, 5512.5, 11025, 16537.5 ]
 
 # Testing
 

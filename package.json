@@ -1,6 +1,6 @@
 {
   "name": "fft-js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Simple pure Javascript implementation of the Cooley-Tukey algorithm. Note: fft-js was chosen as the name since a lot of the FFT implementations on NPM at the time this was published were wrappers for Ruby or C.",
   "license": "MIT",
   "homepage": "https://github.com/vail-systems/node-fft",
@@ -32,6 +32,7 @@
     "tukey"
   ],
   "dependencies": {
-    "commander": "~2.7.1"
+    "commander": "~2.7.1",
+    "bit-twiddle": "~1.0.2"
   }
 }

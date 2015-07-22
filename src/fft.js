@@ -8,14 +8,13 @@
 \*===========================================================================*/
 
 //------------------------------------------------
-// Note: this code is not optimized and is
+// Note: Some of this code is not optimized and is
 // primarily designed as an educational and testing
 // tool.
-// Proper optimization would involve memoization of
-// the sin() and cos() calls... and to get high
-// performace would require transforming the recursive
-// calls into a loop and then loop unrolling. All of
-// this is best accomplished in C or assembly.
+// To get high performace would require transforming
+// the recursive calls into a loop and then loop
+// unrolling. All of this is best accomplished
+// in C or assembly.
 //-------------------------------------------------
 
 //-------------------------------------------------

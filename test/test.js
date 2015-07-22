@@ -1,6 +1,6 @@
 var assert = require('assert'),
-    fft = require('../').fft.fft,
-    fftInPlace = require('../').fft.fftInPlace,
+    fft = require('../').fft,
+    fftInPlace = require('../').fftInPlace,
     dft = require('../').dft;
 
 describe('FFT (Cooley-Tukey)', function () {

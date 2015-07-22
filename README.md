@@ -40,6 +40,17 @@ The DFT (Discrete Fourier Transform) is an unoptimized Fourier Transform for dis
     
     console.log(phasors);
 
+# In-place FFT Example
+
+The in-place FFT implementation generates the FFT in-place, overwriting the original input vector. This is useful for minimizing new memory allocations required for the recursive version.
+
+    var fftInPlace = require('fft-js').fftInPlace,
+        signal = [1, 0, 1, 0];
+        
+    fftInPlace(signal);
+    
+    console.log(signal); //We have overwritten the original vector here with the FFT output.
+
 # Command Line
 
 For testing, you can run from the command line. Input is assumed to be from standard input and contain

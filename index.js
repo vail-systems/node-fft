@@ -7,7 +7,8 @@
  * tool to understand the Fast Fourier Transform.
 \*===========================================================================*/
 module.exports = {
-    fft: require('./src/fft'),
+    fft: require('./src/fft').fft,
+    fftInPlace: require('./src/fft').fftInPlace,
     util: require('./src/fftutil'),
     dft: require('./src/dft')
 };

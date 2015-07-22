@@ -20,6 +20,24 @@ describe('FFT (Cooley-Tukey)', function () {
     });
 });
 
+describe('FFT (in-place Cooley-Tukey)', function() {
+    describe('1,0,1,0', function() {
+        it('Should properly compute [1,0,1,0]', function() {
+            var vector = [1,0,1,0];
+            fftInPlace(vector);
+            checkShortVectorWithThresh(vector);
+        });
+    });
+
+    describe('1,0,1,0,2,0,2,0', function() {
+        it('Should properly compute [1,0,1,0,2,0,2,0]', function() {
+            var vector = [1,0,1,0,2,0,2,0];
+            fftInPlace(vector);
+            checkLongVectorWithThresh(vector);
+        });
+    });
+});
+
 describe('DFT O(n^2) Brute Force', function() {
    describe('1,0,1,0', function() {
       it('Should properly compute [1, 0, 1, 0]', function() {
@@ -31,19 +49,26 @@ describe('DFT O(n^2) Brute Force', function() {
 
 describe('Compare FFT to DFT', function() {
     var randomSignal = signalVector();
-    var coefFFT, coefDFT;
+    var coefFFT, vectorInPlace, coefDFT;
 
     describe('randomSignal FFT', function() {
-        it ('Should compute randomSignal', function() {
+        it('Should compute randomSignal', function() {
             coefFFT = fft(randomSignal);
             assert(coefFFT && coefFFT.length == randomSignal.length);
+        });
+    });
+    describe('randomSignal in-place FFT', function() {
+        it('Should compute randomSignal', function() {
+            vectorInPlace = randomSignal.slice(); //We must copy the original, since the in-place implementation is destructive of the input vector.
+            fftInPlace(vectorInPlace);
+            assert(vectorInPlace && vectorInPlace.length == randomSignal.length);
         });
     });
     describe('randomSignal DFT', function() {
         it('Should compute randomSignal', function() {
             coefDFT = dft(randomSignal);
             assert(coefDFT && coefDFT.length == randomSignal.length);
-        })
+        });
     });
     describe('randomSignal FFT and DFT', function() {
         it('Should compute same output', function() {
@@ -54,7 +79,17 @@ describe('Compare FFT to DFT', function() {
                 assert(equalWithThresh(coefFFT[i][0], coefDFT[i][0], 0.01));
                 assert(equalWithThresh(coefFFT[i][1], coefDFT[i][1], 0.01));
             }
-        })
+        });
+    });
+    describe('randomSignal in-place FFT and DFT', function() {
+        it('Should compute same output', function() {
+
+            //Loop over all elements for the in-place FFT and DFT this time
+            for (var k = 0; k < randomSignal.length; k++) {
+                assert(equalWithThresh(vectorInPlace[k][0], coefDFT[k][0], 0.01));
+                assert(equalWithThresh(vectorInPlace[k][1], coefDFT[k][1], 0.01));
+            }
+        });
     });
 });
 
@@ -67,7 +102,7 @@ function signalVector(vectorLength) {
   }
 
   return vector;
-};
+}
 
 function checkShortVectorWithThresh(coef) {
     assert(equalWithThresh(coef[0][0], 2, 0.01));

@@ -36,9 +36,9 @@ module.exports = {
         N = vector.length;
 
     // Base case is X = x + 0i since our input is assumed to be real only.
-      if (N == 1) {
-          return [[vector[0], 0]];
-      }
+    if (N == 1) {
+      return [[vector[0], 0]];
+    }
 
     // Recurse: all even samples
     var X_evens = fft(vector.filter(even)),
@@ -66,33 +66,39 @@ module.exports = {
 
     return X;
   },
+  //-------------------------------------------------
+  // Calculate FFT for vector where vector.length
+  // is assumed to be a power of 2.  This is the in-
+  // place implementation, to avoid the memory
+  // footprint used by recursion.
+  //-------------------------------------------------
   fftInPlace: function(vector) {
-    var X = [],
-        N = vector.length;
+    var N = vector.length;
+
+    var trailingZeros = twiddle.countTrailingZeros(N); //Once reversed, this will be leading zeros
 
     // Reverse bits
     for (var k = 0; k < N; k++) {
-      var p = twiddle.reverse(k);
+      var p = twiddle.reverse(k) >>> (twiddle.INT_BITS - trailingZeros);
       if (p > k) {
         var complexTemp = [vector[k], 0];
-        vector[p] = vector[k];
-        vector[k] = complexTemp;
+        vector[k] = vector[p];
+        vector[p] = complexTemp;
+      } else {
+        vector[p] = [vector[p], 0];
       }
     }
 
     //Do the DIT now in-place
     for (var len = 2; len <= N; len += len) {
       for (var i = 0; i < len / 2; i++) {
-        var ith = -2 * i * Math.PI / len;
-        var w = [Math.cos(ith), Math.sin(ith)];
+        var w = fftUtil.exponent(i, len);
         for (var j = 0; j < N / len; j++) {
-          var t = complex.multiply(vector[j * len + i + len / 2]);
+          var t = complex.multiply(w, vector[j * len + i + len / 2]);
           vector[j * len + i + len / 2] = complex.subtract(vector[j * len + i], t);
-          vector[j * len + i] = complex.add(vector[j * len + k], t);
+          vector[j * len + i] = complex.add(vector[j * len + i], t);
         }
       }
     }
-
-    return X;
   }
 };

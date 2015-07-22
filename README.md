@@ -85,25 +85,35 @@ See `test/test.js`. Using Mocha:
 Output:
 
     FFT (Cooley-Tukey)
-      1,0,1,0
-        ✓ Should properly compute [1,0,1,0]
-      1,0,1,0,2,0,2,0
-        ✓ Should properly compute [1,0,1,0,2,0,2,0]
-  
+    1,0,1,0
+      ✓ Should properly compute [1,0,1,0]
+    1,0,1,0,2,0,2,0
+      ✓ Should properly compute [1,0,1,0,2,0,2,0]
+    
+    FFT (in-place Cooley-Tukey)
+    1,0,1,0
+      ✓ Should properly compute [1,0,1,0]
+    1,0,1,0,2,0,2,0
+      ✓ Should properly compute [1,0,1,0,2,0,2,0]
+    
     DFT O(n^2) Brute Force
-      1,0,1,0
-        ✓ Should properly compute [1, 0, 1, 0]
-  
+    1,0,1,0
+      ✓ Should properly compute [1, 0, 1, 0]
+    
     Compare FFT to DFT
-      randomSignal FFT
-        ✓ Should compute randomSignal
-      randomSignal DFT
-        ✓ Should compute randomSignal
-      randomSignal FFT and DFT
-        ✓ Should compute same output
-  
-  
-    6 passing (14ms)
+    randomSignal FFT
+      ✓ Should compute randomSignal
+    randomSignal in-place FFT
+      ✓ Should compute randomSignal
+    randomSignal DFT
+      ✓ Should compute randomSignal
+    randomSignal FFT and DFT
+      ✓ Should compute same output
+    randomSignal in-place FFT and DFT
+      ✓ Should compute same output
+    
+    
+    10 passing (16ms)
 
 # License 
 

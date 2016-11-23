@@ -28,6 +28,34 @@ Note: normally inclusion of 'js' in the package name is discouraged. However man
     });
 
     console.log(both);
+
+# Calculate IFFT of given phasors
+    
+    var ifft = require('fft-js').ifft;
+
+    var phasors=[[1,0], [0,0], [1,0], [0,0]];
+
+    var signal=ifft(phasors);
+
+    console.log(signal);
+
+#Calculate fft, modify phasors and calculate ifft
+
+    var fft = require('fft-js').fft;
+    var ifft = require('fft-js').ifft;
+
+    var signal=[1,0,1,0];
+
+    var phasors=fft(signal);
+
+    console.log(phasors);
+
+    phasors[2][0]=0;
+
+    var signal2=ifft(phasors);
+
+    console.log(signal2);
+
     
 # Brute force O(n^2) DFT Example
 

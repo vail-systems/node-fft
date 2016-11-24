@@ -1,5 +1,6 @@
 var assert = require('assert'),
     fft = require('../').fft,
+    ifft = require('../').ifft,
     fftInPlace = require('../').fftInPlace,
     dft = require('../').dft;
 
@@ -16,6 +17,23 @@ describe('FFT (Cooley-Tukey)', function () {
         it('Should properly compute [1,0,1,0,2,0,2,0]', function () {
             var coef = fft([1,0,1,0,2,0,2,0]);
             checkLongVectorWithThresh(coef);
+        });
+    });
+});
+
+describe('IFFT (Cooley-Tukey)', function () {
+
+    describe('1,0,1,0', function () {
+        it('Should properly compute [1,0,1,0]', function () {
+            var coef = ifft([[1,0],[0,0],[1,0],[0,0]]);
+            checkShortVectorWithThreshIfft(coef);
+        });
+    });
+
+    describe('1,0,1,0,2,0,2,0', function () {
+        it('Should properly compute [1,0,1,0,2,0,2,0]', function () {
+            var coef = ifft([[1,0],[0,0],[1,0],[0,0],[2,0],[0,0],[2,0],[0,0]]);
+            checkLongVectorWithThreshIfft(coef);
         });
     });
 });
@@ -132,6 +150,37 @@ function checkLongVectorWithThresh(coef) {
     assert(equalWithThresh(coef[6][1], 0, 0.01));
     assert(equalWithThresh(coef[7][0], -1, 0.01));
     assert(equalWithThresh(coef[7][1], -1, 0.01));
+}
+
+function checkShortVectorWithThreshIfft(coef) {
+    assert(equalWithThresh(coef[0][0], 0.5, 0.01));
+    assert(equalWithThresh(coef[0][1], 0, 0.01));
+    assert(equalWithThresh(coef[1][0], 0, 0.01));
+    assert(equalWithThresh(coef[1][1], 0, 0.01));
+    assert(equalWithThresh(coef[2][0], 0.5, 0.01));
+    assert(equalWithThresh(coef[2][1], 0, 0.01));
+    assert(equalWithThresh(coef[3][0], 0, 0.01));
+    assert(equalWithThresh(coef[3][1], 0, 0.01));
+}
+
+function checkLongVectorWithThreshIfft(coef) {
+    assert(equalWithThresh(coef[0][0], 0.75, 0.01));
+    assert(equalWithThresh(coef[0][1], 0, 0.01));
+    assert(equalWithThresh(coef[1][0], -0.125, 0.01));
+    assert(equalWithThresh(coef[1][1], -0.125, 0.01));
+    assert(equalWithThresh(coef[2][0], 0, 0.01));
+    assert(equalWithThresh(coef[2][1], 0, 0.01));
+    assert(equalWithThresh(coef[3][0], -0.125, 0.01));
+    assert(equalWithThresh(coef[3][1], 0.125, 0.01));
+    assert(equalWithThresh(coef[4][0], 0.75, 0.01));
+    assert(equalWithThresh(coef[4][1], 0, 0.01));
+    assert(equalWithThresh(coef[5][0], -0.125, 0.01));
+    assert(equalWithThresh(coef[5][1], -0.125, 0.01));
+    assert(equalWithThresh(coef[6][0], 0, 0.01));
+    assert(equalWithThresh(coef[6][1], 0, 0.01));
+    assert(equalWithThresh(coef[7][0], -0.125, 0.01));
+    assert(equalWithThresh(coef[7][1], 0.125, 0.01));
+    
 }
 
 function equalWithThresh(val1, val2, threshold) {

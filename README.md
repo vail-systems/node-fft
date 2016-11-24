@@ -123,6 +123,12 @@ Output:
       ✓ Should properly compute [1,0,1,0]
     1,0,1,0,2,0,2,0
       ✓ Should properly compute [1,0,1,0,2,0,2,0]
+
+    IFFT (Cooley-Tukey)
+    1,0,1,0
+      ✓ Should properly compute [1,0,1,0]
+    1,0,1,0,2,0,2,0
+      ✓ Should properly compute [1,0,1,0,2,0,2,0]
     
     DFT O(n^2) Brute Force
     1,0,1,0
@@ -141,7 +147,7 @@ Output:
       ✓ Should compute same output
     
     
-    10 passing (16ms)
+    12 passing (20ms)
 
 # License 
 

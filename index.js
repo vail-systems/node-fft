@@ -8,6 +8,7 @@
 \*===========================================================================*/
 module.exports = {
     fft: require('./src/fft').fft,
+    ifft: require('./src/ifft').ifft,
     fftInPlace: require('./src/fft').fftInPlace,
     util: require('./src/fftutil'),
     dft: require('./src/dft')

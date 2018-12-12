@@ -2,7 +2,8 @@ var assert = require('assert'),
     fft = require('../').fft,
     ifft = require('../').ifft,
     fftInPlace = require('../').fftInPlace,
-    dft = require('../').dft;
+    dft = require('../').dft,
+    idft = require('../').idft;
 
 describe('FFT (Cooley-Tukey)', function () {
 
@@ -61,6 +62,22 @@ describe('DFT O(n^2) Brute Force', function() {
       it('Should properly compute [1, 0, 1, 0]', function() {
           var coef = dft([1,0,1,0]);
           checkShortVectorWithThresh(coef);
+      });
+   });
+});
+
+describe('IDFT O(n^2) Brute Force', function () {
+   describe('1,0,1,0', function() {
+      it('Should properly compute [1, 0, 1, 0]', function() {
+          var coef = idft([[1,0],[0,0],[1,0],[0,0]]);
+          checkShortVectorWithThreshIfft(coef);
+      });
+   });
+
+   describe('1,0,1,0,2,0,2,0', function () {
+      it('Should properly compute [1,0,1,0,2,0,2,0]', function () {
+          var coef = idft([[1,0],[0,0],[1,0],[0,0],[2,0],[0,0],[2,0],[0,0]]);
+          checkLongVectorWithThreshIfft(coef);
       });
    });
 });

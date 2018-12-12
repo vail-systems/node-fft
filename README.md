@@ -68,6 +68,16 @@ The DFT (Discrete Fourier Transform) is an unoptimized Fourier Transform for dis
     
     console.log(phasors);
 
+# Calculate IDFT of given phasors
+    
+    var idft = require('fft-js').idft;
+
+    var phasors=[[1,0], [0,0], [1,0], [0,0]];
+
+    var signal=idft(phasors);
+
+    console.log(signal);
+
 # In-place FFT Example
 
 The in-place FFT implementation generates the FFT in-place, overwriting the original input vector. This is useful for minimizing new memory allocations required for the recursive version.
@@ -112,42 +122,49 @@ See `test/test.js`. Using Mocha:
 
 Output:
 
-    FFT (Cooley-Tukey)
+  FFT (Cooley-Tukey)
     1,0,1,0
-      ✓ Should properly compute [1,0,1,0]
+      √ Should properly compute [1,0,1,0]
     1,0,1,0,2,0,2,0
-      ✓ Should properly compute [1,0,1,0,2,0,2,0]
-    
-    FFT (in-place Cooley-Tukey)
-    1,0,1,0
-      ✓ Should properly compute [1,0,1,0]
-    1,0,1,0,2,0,2,0
-      ✓ Should properly compute [1,0,1,0,2,0,2,0]
+      √ Should properly compute [1,0,1,0,2,0,2,0]
 
-    IFFT (Cooley-Tukey)
+  IFFT (Cooley-Tukey)
     1,0,1,0
-      ✓ Should properly compute [1,0,1,0]
+      √ Should properly compute [1,0,1,0]
     1,0,1,0,2,0,2,0
-      ✓ Should properly compute [1,0,1,0,2,0,2,0]
-    
-    DFT O(n^2) Brute Force
+      √ Should properly compute [1,0,1,0,2,0,2,0]
+
+  FFT (in-place Cooley-Tukey)
     1,0,1,0
-      ✓ Should properly compute [1, 0, 1, 0]
-    
-    Compare FFT to DFT
+      √ Should properly compute [1,0,1,0]
+    1,0,1,0,2,0,2,0
+      √ Should properly compute [1,0,1,0,2,0,2,0]
+
+  DFT O(n^2) Brute Force
+    1,0,1,0
+      √ Should properly compute [1, 0, 1, 0]
+
+  IDFT O(n^2) Brute Force
+    1,0,1,0
+      √ Should properly compute [1, 0, 1, 0]
+    1,0,1,0,2,0,2,0
+      √ Should properly compute [1,0,1,0,2,0,2,0]
+
+  Compare FFT to DFT
     randomSignal FFT
-      ✓ Should compute randomSignal
+      √ Should compute randomSignal
     randomSignal in-place FFT
-      ✓ Should compute randomSignal
+      √ Should compute randomSignal
     randomSignal DFT
-      ✓ Should compute randomSignal
+      √ Should compute randomSignal
     randomSignal FFT and DFT
-      ✓ Should compute same output
+      √ Should compute same output
     randomSignal in-place FFT and DFT
-      ✓ Should compute same output
-    
-    
-    12 passing (20ms)
+      √ Should compute same output
+
+
+  14 passing (27ms)
+
 
 # License 
 

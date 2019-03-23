@@ -27,7 +27,11 @@ var dft = function(vector) {
 
     for (var i = 0; i < N; i++) {
       var exp = fftUtil.exponent(k * i, N);
-      var term = complex.multiply([vector[i], 0], exp); //Complex mult of the signal with the exponential term.
+      var term;
+      if (Array.isArray(vector[i]))
+        term = complex.multiply(vector[i], exp)//If input vector contains complex numbers
+      else
+        term = complex.multiply([vector[i], 0], exp);//Complex mult of the signal with the exponential term.  
       X[k] = complex.add(X[k], term); //Complex summation of X[k] and exponential
     }
   }

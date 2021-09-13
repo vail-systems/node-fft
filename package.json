@@ -16,7 +16,8 @@
   "files": [
     "index.js",
     "fft.js",
-    "src"
+    "src",
+    "index.d.ts"
   ],
   "keywords": [
     "fft",

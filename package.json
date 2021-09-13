@@ -17,7 +17,7 @@
     "index.js",
     "fft.js",
     "src",
-    "test"
+    "index.d.ts"
   ],
   "keywords": [
     "fft",
